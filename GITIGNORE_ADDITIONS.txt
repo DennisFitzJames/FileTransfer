@@ -1,0 +1,15 @@
+# Add to LINEUP .gitignore (do not overwrite the existing one)
+/runtime/
+
+# Add to the Data Hub .gitignore as applicable
+/runtime/
+/logs/
+/Raw/
+/Live/
+/History/
+/venv/
+/.venv/
+__pycache__/
+*.py[cod]
+*.log
+*.tmp
