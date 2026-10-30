@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Production Plans{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='production_plans/production_plans.css') }}">
+</head>
+<body class="production-app {% block body_class %}{% endblock %}" data-lineup-published-ms="{{ lineup_published_ms }}">
+<header class="app-header">
+  <a class="brand" href="{{ url_for('production_plans.overview') }}">
+    <span class="brand-mark">PP</span>
+    <span><strong>Production Plans</strong><small>Live WIP operations</small></span>
+  </a>
+  <nav class="app-nav">
+    <a class="{% if request.endpoint == 'production_plans.overview' %}active{% endif %}" href="{{ url_for('production_plans.overview') }}">Work centres</a>
+    <a class="{% if request.endpoint == 'production_plans.export_page' %}active{% endif %}" href="{{ url_for('production_plans.export_page') }}">Plain plan export</a>
+    <a href="{{ url_for('dashboard') }}">LINEUP</a>
+    <a href="{{ url_for('logistics.overview') }}">Logistics</a>
+    <a href="{{ url_for('control') }}">Control</a>
+  </nav>
+  <div class="header-status"><span class="live-dot"></span> Updated {{ model.generated_at_display }}</div>
+</header>
+<main class="app-main">{% block content %}{% endblock %}</main>
+{% block scripts %}{% endblock %}
+<script src="{{ url_for('static', filename='lineup_auto_refresh.js') }}?v=1.0" defer></script>
+</body>
+</html>
